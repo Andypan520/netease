@@ -1,5 +1,7 @@
 package common;
 
+import com.google.common.base.Strings;
+
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -8,9 +10,9 @@ import java.util.stream.Collectors;
  */
 public class StringUtil {
     public static void main(String[] args) {
-//        testJoin();
-      String s =  removeRepWords("foobar:foo:bar");
-      System.out.println(s);
+        testJoin();
+//      String s =  removeRepWords("foobar:foo:bar");
+//      System.out.println(s);
 //        testPatternPredicate();
 //        testPatternSplit();
     }
@@ -40,7 +42,8 @@ public class StringUtil {
 
 
     private static void testJoin() {
-
+        boolean b  =  Strings.isNullOrEmpty("556");
+        System.out.println(b);
         String string = String.join(":", "foobar", "foo", "bar");
         System.out.println(string);
         System.out.println(String.join(",", "bob@gmail.com\", \"alice@hotmail.com".split("")));
