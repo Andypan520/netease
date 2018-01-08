@@ -1,0 +1,17 @@
+target/
+classes/
+lib/
+logs/
+.classpath
+*.log
+*/bin
+*/test-output
+*.class
+*/.project
+*.project
+*.settings
+*.settings/*
+*.iml
+.idea/*
+*.DS_Store
+dblogs/
