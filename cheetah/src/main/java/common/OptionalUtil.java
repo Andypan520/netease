@@ -47,8 +47,10 @@ public class OptionalUtil {
         System.out.println(integerOptional.isPresent());
         System.out.println(integerOptional.toString());
 
-        List<String> list = Lists.newArrayList("1265", "f", " 5 ","89");
-       List<Integer> intList =  list.stream().map(OptionalUtil::stringToInt).filter(e -> e.isPresent()).map(e -> e.get()).collect(Collectors.toList());
-      intList.forEach(System.out::println);
+        List<String> list = Lists.newArrayList("1265", "f", " 5 ", "89");
+        List<Integer> intList = list.stream().map(OptionalUtil::stringToInt).filter(e -> e.isPresent()).map(e -> e.get()).collect(Collectors.toList());
+        intList.forEach(System.out::println);
+        OptionalUtil.get(() -> 23).orElseThrow(() -> new IllegalStateException()); // not throw exception
+        OptionalUtil.get(() -> null).orElseThrow(() -> new IllegalArgumentException()); //throw exception
     }
 }
