@@ -149,7 +149,7 @@ public class CollectionUtil {
         return array;
     }
 
-    public static <V> Map<Long, V> getIdMap(Collection<V> beans, String idPropertyName) {
+    public static <V> Map<Long, V> toMap(Collection<V> beans, String idPropertyName) {
         if (beans == null || beans.isEmpty()) {
             return Collections.emptyMap();
         }
@@ -165,7 +165,7 @@ public class CollectionUtil {
         return idMap;
     }
 
-    public static <K, V> Map<K, V> getIdMap(Collection<V> beans, String idPropertyName, Class<K> clazz) {
+    public static <K, V> Map<K, V> toMap(Collection<V> beans, String idPropertyName, Class<K> clazz) {
         if (beans == null || beans.isEmpty()) {
             return Collections.emptyMap();
         }
@@ -359,4 +359,6 @@ public class CollectionUtil {
         }
         return splitedCollections;
     }
+
+
 }
