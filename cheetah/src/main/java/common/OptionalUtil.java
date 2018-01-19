@@ -58,16 +58,19 @@ public class OptionalUtil {
 //        OptionalUtil.get(() -> 23).orElseThrow(() -> new IllegalStateException()); // not throw exception
 //        OptionalUtil.get(() -> null).orElseThrow(() -> new IllegalArgumentException()); //throw exception
 //
-        String s = Arrays.toString(Lists.newArrayList(1, 2, 3, 4).toArray());
-        System.out.println(s);
-        s = Joiner.on(",").join(Lists.newArrayList(1, 2, 3, 4));
-        System.out.println(s);
-     //  String  s1 = Collectors.joining(",", "(", ")");
-       // Lists.newArrayList(1, 2, 3, 4).stream().collect(Collectors.joining(",", "(", ")"));
+//        String s = Arrays.toString(Lists.newArrayList(1, 2, 3, 4).toArray());
+//        System.out.println(s);
+//        s = Joiner.on(",").join(Lists.newArrayList(1, 2, 3, 4));
+//        System.out.println(s);
+        //  String  s1 = Collectors.joining(",", "(", ")");
+        // Lists.newArrayList(1, 2, 3, 4).stream().collect(Collectors.joining(",", "(", ")"));
         System.out.println();
 //        new StringJoiner()
 
-        int[] a = new int[]{1,2,3};
-        Sets.newHashSet(a).remove(2);
+//        int[] a = new int[]{1,2,3};
+//        Sets.newHashSet(a).remove(2);
+
+        Optional<String> someNull = Optional.ofNullable(null);
+        System.out.println(someNull.isPresent());
     }
 }

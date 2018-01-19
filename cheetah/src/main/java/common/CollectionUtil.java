@@ -268,31 +268,7 @@ public class CollectionUtil {
         return list.subList(fromIndex, toIndex);
     }
 
-    public static void main(String[] args) {
 
-        List<Long> first = new ArrayList<Long>();
-        first.add(333L);
-        first.add(1234L);
-        first.add(435L);
-        first.add(7655L);
-        List<Long> other = new ArrayList<Long>();
-        other.add(333L);
-        other.add(1234L);
-        other.add(5644L);
-        other.add(77777L);
-        List<Long> res = getFirstHasOtherNot(first, other);
-        System.out.println(res);
-        List<Integer> ids = new ArrayList<Integer>();
-        for (int i = 0; i < 22; i++) {
-            ids.add(i);
-        }
-        int limit = 20 + 1;
-        int offset = 20;
-        ids = subListByLimitAndOffset(ids, limit, offset);
-        for (int id : ids) {
-            System.out.println(id);
-        }
-    }
 
     @SuppressWarnings("unchecked")
     public static <T> T get(Map<String, Object> map, String key, Class<T> clazz) {
@@ -360,5 +336,31 @@ public class CollectionUtil {
         return splitedCollections;
     }
 
+    public static void main(String[] args) {
+
+      /*  List<Long> first = new ArrayList<Long>();
+        first.add(333L);
+        first.add(1234L);
+        first.add(435L);
+        first.add(7655L);
+        List<Long> other = new ArrayList<Long>();
+        other.add(333L);
+        other.add(1234L);
+        other.add(5644L);
+        other.add(77777L);
+        List<Long> res = getFirstHasOtherNot(first, other);
+        System.out.println(res);
+        List<Integer> ids = new ArrayList<Integer>();
+        for (int i = 0; i < 22; i++) {
+            ids.add(i);
+        }
+        int limit = 20 + 1;
+        int offset = 20;
+        ids = subListByLimitAndOffset(ids, limit, offset);
+        for (int id : ids) {
+            System.out.println(id);
+        }*/
+      System.out.println(45L == 45l);
+    }
 
 }
