@@ -5,7 +5,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -75,6 +77,18 @@ public class FileUtil {
         Path path = Paths.get(file);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             writer.write(content);
+        }
+    }
+
+    /**
+     *delete the content of text file without deleting itself
+     * @param file
+     */
+    private static void clear(File file){
+        try (PrintWriter printWriter = new PrintWriter(file);){
+            printWriter.write("");
+        }catch (IOException e){
+            logger.error("clear file {} error",file.getName(),e);
         }
     }
 }
