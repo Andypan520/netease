@@ -51,6 +51,52 @@
             <version>1.9.3</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.leacox.motif/motif -->
+        <!--A pattern matching library for Java 8. Motif provides scala-like pattern matching in Java 8.-->
+        <dependency>
+            <groupId>com.leacox.motif</groupId>
+            <artifactId>motif</artifactId>
+            <version>0.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.leacox.motif/motif-hamcrest -->
+        <dependency>
+            <groupId>com.leacox.motif</groupId>
+            <artifactId>motif-hamcrest</artifactId>
+            <version>0.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.leacox.motif/motif-generator -->
+        <dependency>
+            <groupId>com.leacox.motif</groupId>
+            <artifactId>motif-generator</artifactId>
+            <version>0.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.leacox.motif/motif-benchmarks -->
+        <dependency>
+            <groupId>com.leacox.motif</groupId>
+            <artifactId>motif-benchmarks</artifactId>
+            <version>0.1</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/com.insightfullogic/lambda-behave -->
+        <!--A modern testing and behavioural specification framework for Java 8-->
+        <dependency>
+            <groupId>com.insightfullogic</groupId>
+            <artifactId>lambda-behave</artifactId>
+            <version>0.3</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.auto.value/auto-value -->
+        <!--Immutable value-type code generation for Java 1.6+.-->
+        <dependency>
+            <groupId>com.google.auto.value</groupId>
+            <artifactId>auto-value</artifactId>
+            <version>1.5.3</version>
+            <scope>provided</scope>
+        </dependency>
 
     </dependencies>
 

@@ -1,5 +1,7 @@
 import com.google.common.collect.Lists;
 
+import common.OptionalUtil;
+
 import org.junit.Test;
 
 import java.io.IOException;
@@ -11,6 +13,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -45,4 +48,19 @@ public class CommonTest {
             e.printStackTrace();
         }
     }
+    @Test
+    public void test() {
+        Arrays.stream("综艺,幽默,明星,,".split(",")).forEach(e -> System.out.println(e+" "+1));
+    }
+
+  @Test
+    public void test2() {
+      Optional<Integer> optionalInteger =  OptionalUtil.get(() -> null);
+      optionalInteger.orElseThrow(() -> {
+          System.out.println(23);
+         return  new IllegalArgumentException("IllegalArgumentException lalala");
+      });
+    }
+
+
 }

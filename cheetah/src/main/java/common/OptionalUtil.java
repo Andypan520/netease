@@ -20,12 +20,8 @@ public class OptionalUtil {
      * 防止取值NPE方法
      */
     public static <T> Optional<T> get(Supplier<T> supplier) {
-        try {
             T result = supplier.get();
-            return Optional.of(result);
-        } catch (NullPointerException e) {
-            return Optional.empty();
-        }
+            return Optional.ofNullable(result);
     }
 
     public static Optional<Integer> stringToInt(String s) {
