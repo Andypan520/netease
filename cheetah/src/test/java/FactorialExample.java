@@ -14,9 +14,20 @@
  * limitations under the License.
  */
 
+import com.leacox.motif.MatchesExact;
+import  com.leacox.motif.cases.ListConsCases;
+
+import common.OptionalUtil;
+
+import java.util.Arrays;
+import java.util.List;
+import  java.util.Optional;
+
 import static com.leacox.motif.MatchesAny.any;
 import static com.leacox.motif.Motif.match;
 import static com.leacox.motif.cases.PrimitiveCases.caseLong;
+import static java.util.Arrays.*;
+import static org.openjdk.jmh.util.Optional.none;
 
 /**
  * An example of using pattern matching for implementing factorial.
@@ -45,10 +56,30 @@ public class FactorialExample {
         .getMatch();
   }
 
+//  public static void personMatch(){
+//    Optional<Person> personOpt = OptionalUtil.get(() -> new Person("haha"));
+//    match(personOpt)
+//            .when(any()).then(person -> System.out.println(person))
+//            .when(none()).then(() -> System.out.println("Person not found"))
+//            .doMatch();
+//  }
+
+  public static void listConsMatching(){
+    List<String> list = asList("a", "b", "c", "d");
+    match(list)
+            .when(ListConsCases.nil()).then(() -> System.out.println("Empty List"))
+            .when(ListConsCases.headNil(MatchesExact.eq("b"))).then(() -> System.out.println("Singleton List of 'b'"))
+            .when(ListConsCases.headNil(any())).then(head -> System.out.println("Singleton List of " + head))
+            .when(ListConsCases.headTail(any(), any())).then(
+            (head, tail) -> System.out.println("head: " + head + " Remaining: " + tail))
+            .doMatch();
+  }
 
 
   public static void main(String[] args){
     long result = FactorialExample.factMatching(4);
-    System.out.println(result);
+//    System.out.println(result);
+    //personMatch();
+    listConsMatching();
   }
 }
