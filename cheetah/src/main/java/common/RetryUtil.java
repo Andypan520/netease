@@ -124,15 +124,15 @@ public class RetryUtil {
             return false;
         };
 
-        //异常失败
+        //异常重试
         Integer result = OptionalUtil.get(() -> retry(task, 30L, 1000L, TimeUnit.MILLISECONDS, 3)).orElseGet((() -> 0));
         logger.info("result: {}", result);
 
-        //超时失败
+        //超时重试
         Integer result2 = OptionalUtil.get(() -> retry(task2, 30L, 1000L, TimeUnit.MILLISECONDS, 3)).orElseGet(() -> 0);
         logger.info("result: {}", result2);
 
-        //预期值失败
+        //预期值重试
         boolean result3 = OptionalUtil.get(() -> retry(task3, Predicates.equalTo(false), 30L, 1000L, TimeUnit.MILLISECONDS, 3)).orElseGet(() -> true);
         logger.info("result: {}", result3);
 
