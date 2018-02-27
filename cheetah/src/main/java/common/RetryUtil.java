@@ -49,7 +49,7 @@ public class RetryUtil {
                 //重试监听器
                 .withRetryListener(new RetryListener() {
                                        @Override
-                                       public <V> void onRetry(Attempt<V> attempt) {
+                                       public <T> void onRetry(Attempt<T> attempt) {
                                            if (attempt.hasException()) {
                                                logger.error("第【{}】次重试失败", attempt.getAttemptNumber(), attempt.getExceptionCause());
                                            }
@@ -91,7 +91,7 @@ public class RetryUtil {
                 //重试监听器
                 .withRetryListener(new RetryListener() {
                                        @Override
-                                       public <V> void onRetry(Attempt<V> attempt) {
+                                       public <T> void onRetry(Attempt<T> attempt) {
                                            if (attempt.hasException()) {
                                                logger.error("第【{}】次重试失败", attempt.getAttemptNumber(), attempt.getExceptionCause());
                                            }
