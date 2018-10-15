@@ -4,19 +4,10 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
- * Created by pandechuan on 2018/1/9.
+ * Created by pandechuan on 2018/3/7.
  */
 public class CollectionUtil {
     private static final Logger logger = Logger.getLogger(CollectionUtil.class);
@@ -103,7 +94,7 @@ public class CollectionUtil {
             try {
                 properties.add((T) PropertyUtils.getProperty(bean, property));
             } catch (Exception e) {
-                throw new IllegalArgumentException("CollectionUtils.collectProperty error", e);
+                throw new IllegalArgumentException("CollectionUtils.co llectProperty error", e);
             }
         }
         return properties;
@@ -269,7 +260,6 @@ public class CollectionUtil {
     }
 
 
-
     @SuppressWarnings("unchecked")
     public static <T> T get(Map<String, Object> map, String key, Class<T> clazz) {
         Object value = map.get(key);
@@ -360,7 +350,11 @@ public class CollectionUtil {
         for (int id : ids) {
             System.out.println(id);
         }*/
-      System.out.println(45L == 45l);
+//      /**/
+        System.out.println(45L == 45l);
+
+
     }
+
 
 }

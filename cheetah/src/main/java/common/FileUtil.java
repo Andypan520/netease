@@ -1,5 +1,6 @@
 package common;
 
+import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +47,8 @@ public class FileUtil {
     public static List<String> readAllLines(String fileName) {
         List<String> lines = Lists.newArrayList();
         try {
-            lines = Files.readAllLines(Paths.get(fileName));
+            //  lines = Files.readAllLines(Paths.get(fileName));
+            lines = com.google.common.io.Files.readLines(new File(fileName), Charsets.UTF_8);
         } catch (Exception e) {
             logger.error("readAllLines error!");
         }
@@ -73,7 +75,7 @@ public class FileUtil {
         }
     }
 
-    private static void write(String file, String content) throws IOException {
+    public static void write(String file, String content) throws IOException {
         Path path = Paths.get(file);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             writer.write(content);
@@ -81,14 +83,21 @@ public class FileUtil {
     }
 
     /**
-     *delete the content of text file without deleting itself
+     * delete the content of text file without deleting itself
+     *
      * @param file
      */
-    private static void clear(File file){
-        try (PrintWriter printWriter = new PrintWriter(file);){
+    public static void clear(File file) {
+        try (PrintWriter printWriter = new PrintWriter(file);) {
             printWriter.write("");
-        }catch (IOException e){
-            logger.error("clear file {} error",file.getName(),e);
+        } catch (IOException e) {
+            logger.error("clear file {} error", file.getName(), e);
         }
     }
+
+    public static void append(File file, String line) throws IOException {
+        com.google.common.io.Files.append(line, file, Charsets.UTF_8);
+
+    }
+
 }

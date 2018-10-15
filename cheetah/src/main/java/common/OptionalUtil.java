@@ -1,16 +1,7 @@
 package common;
 
-import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
-import java.util.StringJoiner;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 /**
  * Created by pandechuan on 2018/1/5.
@@ -20,8 +11,8 @@ public class OptionalUtil {
      * 防止取值NPE方法
      */
     public static <T> Optional<T> get(Supplier<T> supplier) {
-            T result = supplier.get();
-            return Optional.ofNullable(result);
+        T result = supplier.get();
+        return Optional.ofNullable(result);
     }
 
     public static Optional<Integer> stringToInt(String s) {
@@ -68,5 +59,6 @@ public class OptionalUtil {
 
         Optional<String> someNull = Optional.ofNullable(null);
         System.out.println(someNull.isPresent());
+
     }
 }
