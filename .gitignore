@@ -1,12 +1,10 @@
 target/
-classes/
 lib/
 logs/
 .classpath
 *.log
 */bin
 */test-output
-*.class
 */.project
 *.project
 *.settings
