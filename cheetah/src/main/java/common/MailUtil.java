@@ -13,10 +13,10 @@ import java.util.List;
 public class MailUtil {
 
     private static final String SMTP_163_HOST = "smtp.163.com";
-    private static final String EMAIL_ACCOUNT = "HZgonghuishenhe@163.com";
-    private static final String EMAIL_AUTH_CODE = "092774qiaoA";
+    private static final String EMAIL_ACCOUNT = "*@163.com";
+    private static final String EMAIL_AUTH_CODE = "";
     private static final String LINE_BREAK = "<br/>";
-    private static final String T0 = "andypan520@yeah.net";
+    private static final String T0 = "";
 
 
     /**
@@ -29,8 +29,7 @@ public class MailUtil {
         email.setHostName(SMTP_163_HOST);
         email.setAuthentication(EMAIL_ACCOUNT, EMAIL_AUTH_CODE);
         email.setFrom(EMAIL_ACCOUNT, "飞鸽传书", "UTF-8");
-        //email.addTo("pandechuan@corp.netease.com,17791706810@163.com");
-        email.addTo("caixuedan@corp.netease.com","pandechuan@corp.netease.com");
+
        // email.addTo("17791706810@163.com");
 
         email.setSubject(runDetailReport.getSubject());
