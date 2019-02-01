@@ -1,10 +1,10 @@
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import common.DateUtil;
+import common.FileUtil;
 import common.OptionalUtil;
 import common.ZipUtil;
 import org.junit.Test;
-import sun.net.www.content.image.png;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,8 +16,12 @@ import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -292,18 +296,167 @@ public class CommonTest {
     public void test15() throws Exception {
         String a = "files/liveimgs_1540435587216_img_10.png";
         //String b = a.substring(a.lastIndexOf('_'));
-        a = a.replace("files"+'/', "");
+        a = a.replace("files" + '/', "");
         System.out.println(a);
     }
 
     @Test
     public void test16() throws Exception {
-      Integer a = 12;
-      Integer b = 12;
-      System.out.println(a == b);
-      System.out.println(a.equals(b));
+        Integer a = 12;
+        Integer b = 12;
+        System.out.println(a == b);
+        System.out.println(a.equals(b));
 
     }
 
+    @Test
+    public void test17() throws Exception {
+
+        System.out.println(LocalDate.now().minusMonths(1));
+
+    }
+
+    @Test
+    public void test18() throws Exception {
+
+        List<? extends Object> list = Lists.newArrayList();
+
+    }
+
+    @Test
+    public void test19() throws Exception {
+
+//        List<? extends Object> list = Lists.newArrayList();
+
+        List<File> fileList = FileUtil.getFileList("/Users/pandechuan/DATA/03-Education/NanKai");
+        String target = "";
+        fileList.forEach(e -> {
+            // System.out.println(e.getName());
+            if (e.getName().contains(target)) {
+                if (e.renameTo(new File(e.getAbsolutePath().replace(target, "硕士研究生")))) {
+                    System.out.println("renamed----->");
+                }
+            }
+        });
+
+    }
+
+    @Test
+    public void test20() throws Exception {
+
+        List<Integer> list = Lists.newArrayList(1, 2, 3, 4);
+
+        for (Integer integer : list) {
+            System.out.println(integer);
+        }
+
+    }
+
+    @Test
+    public void test21() throws Exception {
+
+        // Creating Durations
+        System.out.println("--- Examples --- ");
+
+        Duration oneHours = Duration.ofHours(1);
+        System.out.println(oneHours.getSeconds() + " seconds");
+
+        Duration oneHours2 = Duration.of(1, ChronoUnit.HOURS);
+        System.out.println(oneHours2.getSeconds() + " seconds");
+
+        // Test Duration.between
+        System.out.println("\n--- Duration.between --- ");
+
+        LocalDateTime oldDate = LocalDateTime.of(2016, Month.AUGUST, 31, 10, 20, 55);
+        LocalDateTime newDate = LocalDateTime.of(2016, Month.NOVEMBER, 9, 10, 21, 56);
+
+        System.out.println(oldDate);
+        System.out.println(newDate);
+
+        //count seconds between dates
+        Duration duration = Duration.between(oldDate, newDate);
+
+        System.out.println(duration.getSeconds() + " seconds");
+
+    }
+
+    @Test
+    public void test22() throws Exception {
+        ZoneId zoneId = ZoneId.of("Asia/Shanghai");
+        ZonedDateTime now = ZonedDateTime.now(zoneId);
+        LocalDate firstDayOfThisWeek = now.toLocalDate().with(DayOfWeek.MONDAY);
+        LocalDate firstDayOfNextWeek = firstDayOfThisWeek.plusWeeks(1);
+        ZonedDateTime thisWeekStart = firstDayOfThisWeek.atStartOfDay(zoneId);
+        ZonedDateTime nextWeekStart = firstDayOfNextWeek.atStartOfDay(zoneId);
+
+
+        System.out.println(LocalDate.of(2019, 1, 1).getDayOfWeek());
+
+        LocalDate date = LocalDate.of(2019, 1, 1);
+
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
+
+        LocalDate today = LocalDate.now();
+
+        LocalDate nextWeek = today.plus(1, ChronoUnit.WEEKS);
+        System.out.println("Today is : " + today);
+        System.out.println("Date after 1 week : " + nextWeek);
+    }
+
+    @Test
+    public void test23() throws Exception {
+        LocalDate date = LocalDate.of(2019, 1, 1);
+
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
+
+        switch (dayOfWeek) {
+            case MONDAY:
+                break;
+            case TUESDAY:
+                date = date.plusDays(6);
+                break;
+            case WEDNESDAY:
+                date = date.plusDays(5);
+                break;
+            case THURSDAY:
+                date = date.plusDays(4);
+                break;
+            case FRIDAY:
+                date = date.plusDays(3);
+                break;
+            case SATURDAY:
+                date = date.plusDays(2);
+                break;
+            case SUNDAY:
+                date = date.plusDays(1);
+                break;
+        }
+        System.out.println(date);
+
+        LocalDate nextWeek = date.plus(1, ChronoUnit.WEEKS);
+        System.out.println(nextWeek);
+
+    }
+
+    @Test
+    public void test24() throws Exception {
+
+
+        LocalDate date1 = LocalDate.of(2019, 1, 7);
+        LocalDate date2 = LocalDate.of(2019, 1, 21);
+
+//        Duration duration = Duration.between(date1, date2);
+//        System.out.println(duration.toDays());
+
+        int day2 = date2.getDayOfYear();
+        int day1 = date1.getDayOfYear();
+
+        int modWeek = (day2 - day1) / 7 + 1;
+
+
+//        System.out.println();
+//        System.out.println(Integer.parseInt("03"));
+        System.out.println();
+    }
 
 }

@@ -2,6 +2,7 @@ package common;
 
 import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
+import lombok.experimental.UtilityClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +20,7 @@ import java.util.stream.Stream;
 /**
  * Created by pandechuan on 2018/1/7/007 16:58
  */
+@UtilityClass
 public class FileUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(FileUtil.class);
@@ -99,5 +101,23 @@ public class FileUtil {
         com.google.common.io.Files.append(line, file, Charsets.UTF_8);
 
     }
+
+    public static List<File> getFileList(String strPath) {
+        List<File> fileList = Lists.newArrayListWithExpectedSize(100);
+        File dir = new File(strPath);
+        File[] files = dir.listFiles(); // 该文件目录下文件全部放入数组
+        if (files != null) {
+
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    fileList.addAll(getFileList(file.getAbsolutePath()));
+                } else {
+                    fileList.add(file);
+                }
+            }
+        }
+        return fileList;
+    }
+
 
 }
